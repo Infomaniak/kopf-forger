@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resourceforger-operator
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      application: resourceforger-operator
+  template:
+    metadata:
+      labels:
+        application: resourceforger-operator
+    spec:
+      serviceAccountName: resourceforger-account
+      terminationGracePeriodSeconds: 60
+      imagePullSecrets:
+        - name: docker-registry-secret
+      containers:
+      - name: configmanager
+        image: KOPF_OPERATOR_IMAGE
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
