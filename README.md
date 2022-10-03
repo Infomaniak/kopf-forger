@@ -33,7 +33,7 @@ kustomize build ./deploy/overlays/${YOUR_OVERLAY} | k apply -f -
 
 ```yaml
 ---
-apiVersion: infomaniak.dev/v1
+apiVersion: infomaniak.com/v1
 kind: ResourceForger
 metadata:
   name: HansVanMeegeren
@@ -58,7 +58,7 @@ To apply this CRD will trigger the creation of the **example-config**
 ConfigMap in each namespace listed in **spec.targetNamespaces**. Additions,
 deletions and updates of the **spec.targetNamespaces** **spec.
 originalResources** fields will be reflected on dependent resources in each
-target namespace.
+target namespace. You can give it a try using the [example.yaml](example.yaml) file.
 
 ## Dev (python 3.8)
 
