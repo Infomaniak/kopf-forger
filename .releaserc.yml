@@ -1,0 +1,44 @@
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - "@semantic-release/release-notes-generator"
+
+branches:
+  - name: "master"
+  - name: "dev"
+    prerelease: "alpha"
+
+tagFormat:
+  - ${version}
+
+preset: conventionalcommits
+
+analyzeCommits:
+  - path: '@semantic-release/commit-analyzer'
+    # Determine the type of release by analyzing commits with conventional-changelog
+    releaseRules:
+      - breaking: true
+        release: major
+      - type: build     # Changes that affect the build system or external dependencies
+                        # (example scopes: gulp, broccoli, npm)
+        release: patch
+      - type: chore     # Other changes that don't modify src or test files
+        release: false
+      - type: ci        # Changes to our CI configuration files and scripts
+        release: false
+      - type: docs      # Documentation only changes
+        release: false
+      - type: feat      # A new feature
+        release: minor
+      - type: fix       # A bug fix
+        release: patch
+      - type: perf      # A code change that improves performance
+        release: patch
+      - type: refactor  # A code change that neither fixes a bug nor adds a feature
+        release: false
+      - type: revert    # Reverts a previous commit
+        release: patch
+      - type: style     # Changes that do not affect the meaning of the code
+                        # (white-space, formatting, missing semi-colons, etc)
+        release: false
+      - type: test      # Adding missing tests or correcting existing tests
+        release: false

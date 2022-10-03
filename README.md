@@ -3,21 +3,6 @@
 This CRD replicates arbitrary resource(s) in each of the target namespaces.
 See the [example](#example-using-the-operator-to-forge-configmaps) section below.
 
-## Deploy legacy (not recommended)
-
-add a docker-registry-secret secret to pull operator docker image from our gitlab registry
-
-```bash
-kubectl create secret generic docker-registry-secret \
-    --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
-    --type=kubernetes.io/dockerconfigjson
-```
-
-deploy the crd, the deployment and the rbac
-
-```bash
-kubectl apply -f deploy/bases
-```
 
 ## Deploy with kustomize and flux (recommended)
 
