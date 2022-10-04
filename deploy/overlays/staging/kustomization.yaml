@@ -6,5 +6,5 @@ resources:
   - namespace.yaml
 images:
   - name: KOPF_OPERATOR_IMAGE
-    newName: fkawala/kopf-forger
+    newName: registry.hub.docker.com/fkawala/kopf-forger
     newTag: v1.0.0
