@@ -1,0 +1,51 @@
+default_stages: [commit]
+exclude: "^test/test_files/"
+fail_fast: true
+default_language_version:
+    python: python3.8
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+    -   id: check-yaml
+        args: [--allow-multiple-documents]
+    -   id: end-of-file-fixer
+        stages: [commit]
+    -   id: fix-encoding-pragma
+    -   id: mixed-line-ending
+    -   id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+        stages: [commit]
+    -   id: debug-statements
+
+-   repo: https://github.com/john-hen/Flake8-pyproject
+    rev: 1.1.0
+    hooks:
+    -   id: Flake8-pyproject
+
+-   repo: https://github.com/codespell-project/codespell
+    rev: v2.0.0
+    hooks:
+    -   id: codespell
+        exclude: >
+            (?x)^(
+                .*\.yaml
+            )$
+
+-   repo: https://github.com/pycqa/isort
+    rev: 5.8.0
+    hooks:
+    -   id: isort
+
+-   repo: https://github.com/psf/black
+    rev: 22.8.0
+    hooks:
+    -   id: black
+
+-   repo:  local
+    hooks:
+        - id: pylint
+          name: pylint
+          entry: pylint
+          language: system
+          types: [ python ]
