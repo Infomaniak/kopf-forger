@@ -1,3 +1,27 @@
+[project]
+description = "A Kopf operator that replicates arbitrary resources"
+requires-python = ">=3.8"
+dynamic = ["version"]
+name = "k8s-forger"
+
+[project.license]
+file = "LICENCE"
+content-type = "text/plain"
+
+[[project.authors]]
+author = "François Kawala"
+author_email = "francois.kawala@infomaniak.com"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+url = "https://github.com/Infomaniak/kopf-forger"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
 [tool.black]
 line-length = 88
 target-version = ['py38']

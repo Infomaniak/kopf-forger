@@ -18,6 +18,11 @@ repos:
         stages: [commit]
     -   id: debug-statements
 
+-   repo: https://github.com/abravalheri/validate-pyproject
+    rev: main
+    hooks:
+      - id: validate-pyproject
+
 -   repo: https://github.com/john-hen/Flake8-pyproject
     rev: 1.1.0
     hooks:

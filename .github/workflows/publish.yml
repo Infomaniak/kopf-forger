@@ -16,10 +16,11 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: fkawala/kopf-forger:${{github.ref_name}}
+          tags: ghcr.io/infomaniak/kopf-forger:${{github.ref_name}}
