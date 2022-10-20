@@ -4,11 +4,9 @@ This CRD replicates arbitrary resource(s) in each of the target namespaces.
 See the [example](#example-using-the-operator-to-forge-configmaps) section below.
 
 
-## Deploy with kustomize and flux (recommended)
+## Deploy with kustomize or flux (recommended)
 
-create a new overlay like staging.
-
-If you are not using flux but only kustomize, create secret like first step then apply your overlay.
+Create a new overlay starting from [deploy/overlays/staging](deploy/overlays/staging). Apply the new overlay manually or using fluxCD.
 
 ```bash
 kustomize build ./deploy/overlays/${YOUR_OVERLAY} | k apply -f -
@@ -41,9 +39,7 @@ spec:
 ```
 To apply this CRD will trigger the creation of the **example-config**
 ConfigMap in each namespace listed in **spec.targetNamespaces**. Additions,
-deletions and updates of the **spec.targetNamespaces** **spec.
-originalResources** fields will be reflected on dependent resources in each
-target namespace. You can give it a try using the [example.yaml](example.yaml) file.
+deletions and updates of the **spec.originalResources** fields will be reflected in each target namespace. You can give it a try using the [example.yaml](example.yaml) file.
 
 ## Dev (python 3.8)
 
